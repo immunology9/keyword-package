@@ -1,6 +1,7 @@
 const express = require('express');
 const { scrape } = require('./scraper');
 const { parseResult, toCSV } = require('./parser');
+const path = require('path');
 const {
   syncCategories,
   loadCategories,
@@ -10,6 +11,7 @@ const {
 
 const app = express();
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 const PORT = process.env.PORT || 3000;
 
